@@ -1,0 +1,15 @@
+version: '2'
+services:
+    node:
+        build: ./node
+        links:
+            - redis:redis
+        ports:
+            - "8080:8080"
+        volumes:
+            - "./node:/src"
+            - /src/node_modules
+    redis:
+        build: ./redis
+        ports:
+            - "6379:6379"
